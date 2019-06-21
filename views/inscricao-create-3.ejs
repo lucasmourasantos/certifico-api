@@ -1,0 +1,57 @@
+<%- include header.ejs %>
+
+    <div class="py-1">
+        <img class="d-block mx-auto mb-4" src="/images/icone_certifico_site.png" alt="" width="72" height="72">
+        <h2>Inscrições Online</h2>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" name="formEscola" id="formEscola" action="/inscricao" method="GET">
+              <div class="row">
+                  <div class="input-group col-md-4 mb-3">
+                      <input type="text" class="search-query form-control" id="cpf" name="cpf" placeholder="Buscar por CPF" maxlength="14" onkeypress="formatar('###.###.###-##', this);">
+                      <span class="input-group-btn">
+                          <input type="submit" class="btn btn-primary" name="emitir" value="Pesquisar">
+                      </span>
+                      <div class="invalid-feedback">
+                          Please enter a valid email address for shipping updates.
+                      </div>
+                  </div>
+              </div>
+          </form>
+            <form class="needs-validation" action="/finalizar_inscricao" method="POST" novalidate>
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <div class="resultadoForm">
+                          <input type="hidden" name="participante_id" id="participante_id" value="<%= id %>"/>
+                          <input type="hidden" name="participante_nome" id="participante_nome" value="<%= nome %>"/>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <td>CPF</td>
+                                  <td>NOME</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><%= cpf %></td>
+                                  <td><%= nome %></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <button class="btn btn-primary btn-lg" type="submit" name="inscricao">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+<%- include footer.ejs %>

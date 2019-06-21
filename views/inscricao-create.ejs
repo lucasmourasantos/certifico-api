@@ -1,0 +1,30 @@
+<%- include header.ejs %>
+
+    <div class="py-1">
+        <img class="d-block mx-auto mb-4" src="/images/icone_certifico_site.png" alt="" width="72" height="72">
+        <h2>Inscrições Online</h2>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" name="buscaCPF" action="/inscricao-2" method="POST">
+              <div class="row">
+                  <div class="input-group col-md-4 mb-3">
+                      <input type="text" class="search-query form-control" id="cpf" name="cpf" placeholder="Buscar por CPF" maxlength="14">
+                      <span class="input-group-btn">
+                          <button class="btn btn-primary" type="submit">Pesquisar</button>
+                      </span>
+                      <div class="invalid-feedback">
+                          Please enter a valid email address for shipping updates.
+                      </div>
+                  </div>
+              </div>
+          </form>
+
+        </div>
+    </div>
+
+<%- include footer.ejs %>

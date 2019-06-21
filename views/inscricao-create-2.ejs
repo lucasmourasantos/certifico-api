@@ -1,0 +1,73 @@
+<%- include header.ejs %>
+
+    <div class="py-1">
+        <img class="d-block mx-auto mb-4" src="/images/icone_certifico_site.png" alt="" width="72" height="72">
+        <h2>Inscrições Online</h2>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <form class="needs-validation" action="/finalizar_inscricao" method="POST" novalidate>
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <div class="resultadoForm">
+                          <% if(participante.length){
+
+                            for(var i = 0; i< participante.length; i++) {%>
+
+                              <input type="hidden" name="participante_id" id="participante_id" value="<%= participante[i].id%>"/>
+                              <input type="hidden" name="participante_nome" id="participante_nome" value="<%= participante[i].nome%>"/>
+
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <td>Participante</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><%= participante[i].nome%></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                          <% }
+                           }else{ %>
+                                <option value=""> Nenhuma informação do Banco de Dados</option>
+                            <% } %>
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="layout">Evento</label>
+                        <select class="custom-select d-block w-100" name="id_evento" id="id_evento">
+                            <option value="">Escolha...</option>
+                            <% if(evento.length){
+
+                              for(var i = 0; i< evento.length; i++) {%>
+
+                                <option value="<%= evento[i].id%>"><%= evento[i].nome%></option>
+
+                            <% }
+                             }else{ %>
+                                  <option value=""> Nenhuma informação do Banco de Dados</option>
+                              <% } %>
+                      </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-lg" type="submit" name="inscricao">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+<%- include footer.ejs %>
